@@ -3,3 +3,8 @@ Creating a ssh-keygen to access gitlab: cmd: ssh-keygen -t ed25519 -C "gitlab ke
 To check if the authentication is successful use the command : ssh -T git@gitlab.com
 git pull --prune
 git checkout -b <branchname>
+
+
+For the Demo file from the Tech from nana
+(gitlab)  [https://gitlab.com/nanuchi/gitlab-cicd-crash-course] 
+make run 
