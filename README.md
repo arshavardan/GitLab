@@ -6,5 +6,5 @@ git checkout -b <branchname>
 
 
 For the Demo file from the Tech from nana
-(gitlab)  [https://gitlab.com/nanuchi/gitlab-cicd-crash-course] 
+[gitlab](https://gitlab.com/nanuchi/gitlab-cicd-crash-course)
 make run 
