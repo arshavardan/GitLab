@@ -12,3 +12,4 @@
   - [ ] sudo apt update
   - [ ] sudo apt install pip, make, make-guile
   - [ ] sudo apt install python3.8-venv
+  - [ ] list of commands that needed to know
