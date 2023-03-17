@@ -1,0 +1,43 @@
+variables:
+  IMAGE_NAME: registry.gitlab.com/harry-test-group/gitlab-cicd-crash-course
+  IMAGE_TAG: $CI_COMMIT_SHA
+
+stages:
+  - test
+  - build
+  - deploy
+
+run_tests:
+  stage: test
+  image: python:3.9-slim-buster
+  before_script:
+    - apt-get update && apt-get install make
+  script:
+    - make test
+
+build_image:
+  stage: build
+  image: docker:23.0.1-cli
+  services:
+    - docker:23.0.1-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - docker push $IMAGE_NAME:$IMAGE_TAG
+    - docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest
+    - docker push $IMAGE_NAME:latest
+
+Deploy_App:
+  stage: deploy
+  before_script:
+    - chmod 400 $SSH_KEY
+  script:
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@34.201.23.60 "
+      docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY &&
+      docker ps -aq | xargs docker stop | xargs docker rm &&
+      docker run -d -p 5000:5000 $IMAGE_NAME:latest"
+
+  ##  docker ps -aq | xargs docker stop | xargs docker rm && add this command after the docker login after the first deploy
