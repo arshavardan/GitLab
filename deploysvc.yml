@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nodeimage
+  name: nodeimage
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nodeimage
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nodeimage
+    spec:
+      containers:
+      - image: registry.gitlab.com/harry-test-group/gitlab-cicd-crash-course:latest
+        name: gitlab-registry
+        ports:
+        - containerPort: 5000
+        resources: {}
+      imagePullSecrets:
+      - name: gitlab-auth
+      
+status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-app-service
+spec:
+  selector:
+    app: nodeimage
+  type: NodePort
+  ports:
+  - name: http
+    port: 5000
+    targetPort: 5000
