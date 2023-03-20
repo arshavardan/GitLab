@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: nodeimage
-  name: nodeimage
+    app: pythonapp
+    name: pythonapp
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: nodeimage
+      app: pythonapp
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: nodeimage
+        app: pythonapp
     spec:
       containers:
       - image: registry.gitlab.com/harry-test-group/gitlab-cicd-crash-course:latest
@@ -32,12 +32,14 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejs-app-service
+  name: python-app-service
 spec:
   selector:
-    app: nodeimage
+    app: pythonapp
   type: NodePort
   ports:
   - name: http
     port: 5000
     targetPort: 5000
+
+
