@@ -54,3 +54,6 @@ Deploy_App:
 
   ##   - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@34.228.7.118 "   ##change the IP address of an instance and provide it with associated SSH as a variable to acess that VM
   ##  docker ps -aq | xargs docker stop | xargs docker rm && add this command after the docker login after the first deploy
+  
+  
+  
