@@ -9,7 +9,7 @@ stages:
 
 ##adding a "." before a job will skip that particular job if we want to skip particular stages.
 
-.run_tests:
+Run_tests:
   stage: test
   image: python:3.9-slim-buster
   before_script:
@@ -17,7 +17,7 @@ stages:
   script:
     - make test
 
-build_image:
+Build_image:
   stage: build
   image: docker:23.0.1-cli
   services:
