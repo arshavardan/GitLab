@@ -41,3 +41,10 @@ Deploy_App:
       docker run -d -p 5000:5000 $IMAGE_NAME:latest"
 
   ##  docker ps -aq | xargs docker stop | xargs docker rm && add this command after the docker login after the first deploy
+
+
+only:
+  refs:
+    - master
+  jobs:
+    - test
