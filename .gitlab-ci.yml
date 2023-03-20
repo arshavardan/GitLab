@@ -50,10 +50,12 @@ Deploy_App:
       pwd && sudo kubectl get nodes && ls &&
       sudo kubectl apply -f deploysvc.yaml &&
       sudo kubectl rollout restart deploy pythonapp"
-## using the above command to restart the pods one by one such that new latest image will be pulled without any downtime      
+## use the above command to restart the pods one by one such that new latest image will be pulled without any downtime as configuring 
+  #the deployment fetched no result in pulling the latest image, even though the image name is same with the same tag; underlying image is different    
 
-  ##   - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@34.228.7.118 "   #Provide the IP address of an instance along with its associated SSH as a variable to acess that VM
-  ##  docker ps -aq | xargs docker stop | xargs docker rm && add this command after the docker login after the first deploy
+  ##- ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@34.228.7.118 "
+     #Provide the IP address of an instance along with its associated SSH as a variable to acess that VM
+  ##  docker ps -aq | xargs docker stop | xargs docker rm && add this command after the docker login after the first deploy such that previous running containers are removed and the new containers with latest images will be deployed
   
   
   
