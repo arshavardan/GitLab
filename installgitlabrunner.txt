@@ -11,3 +11,10 @@ Source: https://docs.gitlab.com/runner/install/linux-repository.html
 5. Status of gitlab-runner: sudo gitlab-runner status
 
 6. stop the gitlab-runner: sudo gitlab-runner stop
+
+7. Register the Gitlab-runner: sudo gitlab-runner register
+
+
+Install gitlab runner on kubernetes
+
+1. 
