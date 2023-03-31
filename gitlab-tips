@@ -1,2 +1,13 @@
 login to the gitlab registry via any VM
 docker login registry.gitlab.com
+
+
+build:
+  stage: build
+  script:
+    - echo "Building the project"
+  only:
+    - master
+  rules:
+    - changes:
+        - path/to/your/file
