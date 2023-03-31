@@ -11,3 +11,17 @@ build:
   rules:
     - changes:
         - path/to/your/file
+
+deploy:
+  stage: deploy
+  script:
+        echo "Deploying...";
+        echo "Deploying again...";
+        whoami;
+        whoami;
+  only:
+    refs:
+      - tags
+  except:
+    - dev
+    
