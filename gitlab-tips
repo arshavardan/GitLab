@@ -1,0 +1,2 @@
+login to the gitlab registry via any VM
+docker login registry.gitlab.com
