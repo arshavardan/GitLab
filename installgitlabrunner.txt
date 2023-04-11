@@ -2,6 +2,11 @@ Source: https://docs.gitlab.com/runner/install/linux-repository.html
 
 1. Add the official GitLab repository: curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
 
+sudo chmod +x /usr/local/bin/gitlab-runner
+sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+sudo gitlab-runner start
+sudo cat /etc/systemd/system/gitlab-runner.service
+
 2. Install the latest version of GitLab Runner: sudo apt-get install gitlab-runner
 
 3. check the version of gitlab-runner: cd /home/ ; ls; sudo gitlab-runner --version
