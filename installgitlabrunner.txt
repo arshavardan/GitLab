@@ -6,7 +6,7 @@ Source: https://docs.gitlab.com/runner/install/linux-repository.html
 
 3. check the version of gitlab-runner: cd /home/ ; ls; sudo gitlab-runner --version
 
-4. Adding the gitlab-runner to the sudoers file: sudo vi /etc/sudoers
+4. Adding the gitlab-runner to the sudoers file: sudo vi /etc/sudoers = gitlab-runner ALL=(ALL) NOPASSWD: ALL
 
 5. Status of gitlab-runner: sudo gitlab-runner status
 
