@@ -1,0 +1,40 @@
+{
+    "$schema": "https://www.krakend.io/schema/v3.json",
+    "version": 3,
+    "name": "APIGateway",
+    "timeout": "300000ms",
+    "cache_ttl": "300s",
+    "endpoints": [
+      {
+        "endpoint": "/users",
+        "method": "GET",
+        "output_encoding": "no-op",
+        "middleware": {
+          "auth_basic": {
+              "realm": "My API",
+              "users": {
+                  "harsha": "harsha"
+              }
+          }
+      },        
+        "backend": [
+          {
+            "url_pattern": "/users",
+            "host": [
+              "https://jsonplaceholder.typicode.com"
+            ],
+            "extra_config": {
+              "qos/http-cache": {
+                "shared": true
+              }
+            }
+          }
+        ],
+        "input_query_strings": [
+          "id"
+        ]
+      }   
+    ],
+    "output_encoding": "json",
+    "port": 9000
+  }
